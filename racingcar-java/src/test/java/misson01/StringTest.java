@@ -67,19 +67,12 @@ public class StringTest {
         final String alphaString = "abc";
 
         // when
-        assertThatThrownBy(() ->{
-            alphaString.charAt(3);
-        }).isInstanceOf(StringIndexOutOfBoundsException.class)
-                .hasMessageContaining("String index out of range: 3");
+        assertThatThrownBy(() -> { alphaString.charAt(3); }) // 대괄호 앞에 스페이스
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range: 3"); // 커스텀Exception 작성하기.
 
         // then
         assertThat(alphaString).hasSize(3);
         assertThat(alphaString.charAt(number)).isEqualTo(alpha);
     }
 }
-
-/**
- * 질문 1. 적절한 final 위치
- * 질문 2. 하나의 내장함수를 테스트를 원할 때, 다른 내장함수 사용 여부
- * 질문 3. 요구사항 3번에 ThrownBy를 통해 체크해야 하는 것
- */
